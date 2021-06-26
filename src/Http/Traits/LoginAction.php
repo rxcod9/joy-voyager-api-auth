@@ -31,7 +31,7 @@ trait LoginAction
      *              property="email",
      *              type="string",
      *              format="email",
-     *              example="user@user.com"
+     *              example="admin@admin.com"
      *         ),
      *         @OA\Property(property="password", type="string", format="password", example="password"),
      *         @OA\Property(property="remember_me", type="boolean", example="false"),
