@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      * The config_key for voyager-api-auth package.
      */
@@ -30,9 +29,35 @@ return [
     | Guard config
     |--------------------------------------------------------------------------
     |
-    | Here you can specify voyager api guard
+    | Here you can specify voyager api auth guard settings
     |
     */
 
-    'guard' =>  env('VOYAGER_API_AUTH_GUARD', 'api'),
+    'guard'        => env('VOYAGER_API_AUTH_GUARD', 'api'),
+    'webGuard'     => env('VOYAGER_API_WEB_AUTH_GUARD', 'web'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Throttle config
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify voyager api auth throttle settings
+    |
+    */
+
+    'maxAttempts'  => env('VOYAGER_API_AUTH_MAX_ATTEMPTS', 5),
+    'decayMinutes' => env('VOYAGER_API_AUTH_DECAY_MINUTES', 2),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Url config
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify voyager api auth internal url
+    | in case your public url is not accessible
+    | or if you're running your app inside docker
+    |
+    */
+
+    'internal_url' => env('VOYAGER_API_AUTH_INTERNAL_URL', env('APP_URL', 'http://localhost')),
 ];

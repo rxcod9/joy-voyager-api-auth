@@ -12,8 +12,8 @@ trait ProfileAction
 {
     /**
      * @OA\Get(
-     * path="/api/profile",
-     *   tags={"User"},
+     *   path="/api/profile",
+     *   tags={"auth"},
      *   security={
      *      {"token": {}},
      *   },
@@ -38,12 +38,16 @@ trait ProfileAction
      */
     public function profile(Request $request)
     {
-        $route    = '';
-        $dataType = Voyager::model('DataType')->where('model_name', Auth::guard(config('joy-voyager-api-auth.guard', 'api'))->getProvider()->getModel())->first();
-        if (!$dataType && config('joy-voyager-api-auth.guard', 'api') == 'api') {
-            $route = route('voyager.users.edit', Auth::user()->getKey());
+        $slug     = '';
+        $dataType = Voyager::model('DataType')->where(
+            'model_name',
+            joyProviderModel()
+        )->first();
+
+        if (!$dataType && joyGuard() == 'api') {
+            $slug = 'users';
         } elseif ($dataType) {
-            $route = route('voyager.' . $dataType->slug . '.edit', Auth::user()->getKey());
+            $slug = $dataType->slug;
         }
 
         $isSoftDeleted = false;
@@ -57,6 +61,14 @@ trait ProfileAction
         // Check if BREAD is Translatable
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
+        $response = $this->overrideSendProfileResponse(
+            $request,
+            $dataTypeContent
+        );
+        if ($response) {
+            return $response;
+        }
+
         $resourceClass = 'joy-voyager-api.json';
 
         if (app()->bound("joy-voyager-api.$slug.json")) {
@@ -65,10 +77,28 @@ trait ProfileAction
 
         $resource = app()->make($resourceClass);
 
-        return $resource::make($dataTypeContent)->additional(compact(
-            // 'dataType', // @TODO
-            'isModelTranslatable',
-            'isSoftDeleted'
-        ));
+        return $resource::make($dataTypeContent)
+            ->additional(
+                compact(
+                    // 'dataType', // @TODO
+                    'isModelTranslatable',
+                    'isSoftDeleted'
+                )
+            );
+    }
+
+    /**
+     * Override send Profile response.
+     *
+     * @param Request $request         Request
+     * @param mixed   $dataTypeContent DataTypeContent
+     *
+     * @return mixed
+     */
+    protected function overrideSendProfileResponse(
+        Request $request,
+        $dataTypeContent
+    ) {
+        //
     }
 }

@@ -17,6 +17,6 @@ class VoyagerUserController extends TCGVoyagerBaseController
      */
     public function __construct()
     {
-        Auth::shouldUse(config('joy-voyager-api-auth.guard', 'api'));
+        Auth::shouldUse(joyGuard());
     }
 }

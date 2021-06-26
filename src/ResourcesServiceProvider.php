@@ -29,7 +29,7 @@ class ResourcesServiceProvider extends ServiceProvider implements DeferrableProv
     public function register()
     {
         $this->app->bind('joy-voyager-api-auth.auth', function ($app) {
-            return new Auth(null);
+            return new Auth(null, null);
         });
         $this->app->bind('joy-voyager-api-auth.user', function ($app) {
             return new User(null);

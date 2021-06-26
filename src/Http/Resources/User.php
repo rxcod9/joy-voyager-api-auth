@@ -22,6 +22,10 @@ class User extends JsonResource
      */
     public function toArray($request): array
     {
+        if (is_array($this->resource)) {
+            return $this->resource;
+        }
+
         return Arr::except(
             parent::toArray($request),
             $this->resource->getHidden()

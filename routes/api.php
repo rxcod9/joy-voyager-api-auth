@@ -24,7 +24,14 @@ Route::group(['as' => 'joy-voyager-api-auth.'], function () {
 
     $namespacePrefix = '\\' . config('joy-voyager-api-auth.controllers.namespace') . '\\';
 
-    Route::group(['middleware' => 'auth:' . config('joy-voyager-api-auth.guard', 'api')], function () use ($namespacePrefix) {
+    // Public routes
+    Route::group(['as' => 'user.'], function () use ($namespacePrefix): void {
+        Route::post('/register', $namespacePrefix . 'VoyagerAuthController@register')->name('register');
+        Route::post('/login', $namespacePrefix . 'VoyagerAuthController@login')->name('login');
+        Route::post('/refreshToken', $namespacePrefix . 'VoyagerAuthController@refreshToken')->name('refreshToken');
+    });
+
+    Route::group(['middleware' => 'auth:' . joyGuard()], function () use ($namespacePrefix) {
         // event(new RoutingAdmin()); @deprecated
 
         Route::get('profile', ['uses' => $namespacePrefix . 'VoyagerUserController@profile', 'as' => 'profile']);
