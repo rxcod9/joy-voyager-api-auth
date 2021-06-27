@@ -5,7 +5,7 @@ use Laravel\Passport\Client;
 
 // if (! function_exists('joyVoyagerApiAuth')) {
 //     /**
-//      * Helper
+//      * Joy voyager api auth
 //      */
 //     function joyVoyagerApiAuth($argument1 = null)
 //     {
@@ -15,7 +15,7 @@ use Laravel\Passport\Client;
 
 if (!function_exists('joyGuard')) {
     /**
-     * Helper
+     * Joy guard
      */
     function joyGuard(): ?string
     {
@@ -25,7 +25,7 @@ if (!function_exists('joyGuard')) {
 
 if (!function_exists('joyProvider')) {
     /**
-     * Helper
+     * Joy provider
      */
     function joyProvider(): ?string
     {
@@ -35,7 +35,7 @@ if (!function_exists('joyProvider')) {
 
 if (!function_exists('joyProviderModel')) {
     /**
-     * Helper
+     * Joy provider model
      */
     function joyProviderModel(): ?string
     {
@@ -45,7 +45,7 @@ if (!function_exists('joyProviderModel')) {
 
 if (!function_exists('joyPasswordClient')) {
     /**
-     * Helper
+     * Joy password client
      */
     function joyPasswordClient(): Client
     {

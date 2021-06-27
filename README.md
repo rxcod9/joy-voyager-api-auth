@@ -31,7 +31,7 @@ composer require joy/voyager-api-auth
 php artisan vendor:publish --provider="Joy\VoyagerApiAuth\VoyagerApiAuthServiceProvider" --force
 
 # 3. Test Api with CURL
-curl -s 'http://localhost/api/login' -H 'Accept: application/json' -H 'Content-Type: application/json' --data-raw $'{\n  "email": "user@user.com",\n  "password": "password",\n  "remember_me": false\n}'
+curl -s 'http://localhost/api/login' -H 'Accept: application/json' -H 'Content-Type: application/json' --data-raw $'{\n  "email": "admin@admin.com",\n  "password": "password",\n  "remember_me": false\n}'
 ```
 
 ---
