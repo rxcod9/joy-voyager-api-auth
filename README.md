@@ -7,7 +7,7 @@ By 🐼 [Ramakant Gangwar](https://github.com/rxcod9).
 <!-- ![Screenshot](https://raw.githubusercontent.com/rxcod9/joy-voyager-api-auth/main/cover.jpg) -->
 
 [![Latest Version](https://img.shields.io/github/v/release/rxcod9/joy-voyager-api-auth?style=flat-square)](https://github.com/rxcod9/joy-voyager-api-auth/releases)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rxcod9/joy-voyager-api-auth/run-tests?label=tests)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/rxcod9/joy-voyager-api-auth/run-tests.yml?branch=main&label=tests)
 [![Total Downloads](https://img.shields.io/packagist/dt/joy/voyager-api-auth.svg?style=flat-square)](https://packagist.org/packages/joy/voyager-api-auth)
 
 ---
