@@ -6,9 +6,9 @@ namespace Joy\VoyagerApiAuth\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Joy\VoyagerApiAuth\Http\Traits\ProfileAction;
-use TCG\Voyager\Http\Controllers\VoyagerBaseController as TCGVoyagerBaseController;
+use Joy\VoyagerCore\Http\Controllers\VoyagerBaseController as BaseVoyagerBaseController;
 
-class VoyagerUserController extends TCGVoyagerBaseController
+class VoyagerUserController extends BaseVoyagerBaseController
 {
     use ProfileAction;
 
